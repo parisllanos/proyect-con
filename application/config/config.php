@@ -14,7 +14,10 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://www.concursa.la';
+// local
+// $config['base_url']	= 'http://www.concursa.la';
+// heroku
+$config['base_url']	= 'http://concursa.herokuapp.com';
 
 /*
 |--------------------------------------------------------------------------
