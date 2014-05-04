@@ -1,3 +1,7 @@
+
+application/config/config.php
+application/config/database.php  
+
 .DS_Store
 
 application/cache/*
@@ -7,6 +11,3 @@ application/cache/*
 application/logs/*
 !application/logs/index.html
 !application/logs/.htaccess
-
-/application/config/config.php
-/application/config/database.php  
