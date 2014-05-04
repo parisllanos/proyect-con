@@ -12,23 +12,74 @@ class Controller_home extends CI_Controller
 		$_SESSION['url_artista']=$artista;
 		$_SESSION['url_pais']=$pais;
 
-		$artista = ucwords(str_replace('-',' ',$artista));
-		$pais = ucwords(str_replace('-',' ',$pais));
-		$data=array();
-		$data['artista'] = $artista;
-		$data['pais']=$pais;
-		$data_artist = array();
-
 		// creamos los datos para toda la app
-		if($artista=='One Direction' && $pais=='Chile'){
-			$data_artist['artista']=$artista;
-			$data_artist['pais']=$pais;
+		if($artista=='one-direction' && $pais=='uruguay'){
+			$data_artist['artista']='One Direction';
+			$data_artist['pais']='Uruguay';
+			$data_artist['ciudad']='Montevideo';
+			$data_artist['hora']='20:00';
+			$data_artist['direccion']='Estadio Centenario, Montevideo,URY, Uruguay';
+			$data_artist['entradas']='10';
+			$data_artist['participantes']='506';
+			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
+			$data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['background']='wal_one.png';
+			// guardamos los datos para toda la app
+			$_SESSION['data_artist']=$data_artist;
+		}elseif($artista=='demi-lovato' && $pais=='chile')
+		{
+			$data_artist['artista']='Demi Lovato';
+			$data_artist['pais']='Chile';
 			$data_artist['ciudad']='Santiago';
-			$data_artist['hora']='13:00';
-			$data_artist['direccion']='pasaje cañete';
-			$data_artist['entradas']='15';
-			$data_artist['participantes']='874';
-			$data_artist['url_bitly']='http://onedirection.herokuapp.com';
+			$data_artist['hora']='20:00';
+			$data_artist['direccion']='Movistar Arena, Santiago de Chile, Chile';
+			$data_artist['entradas']='10';
+			$data_artist['participantes']='765';
+			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
+			$data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['background']='wal_demi.png';
+			// guardamos los datos para toda la app
+			$_SESSION['data_artist']=$data_artist;
+		}elseif($artista=='demi-lovato' && $pais=='mexico')
+		{
+			$data_artist['artista']='Demi Lovato';
+			$data_artist['pais']='Mexico';
+			$data_artist['ciudad']='Monterrey';
+			$data_artist['hora']='21:00';
+			$data_artist['direccion']='Arena Monterrey, Monterrey';
+			$data_artist['entradas']='11';
+			$data_artist['participantes']='676';
+			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
+			$data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['background']='wal_demi.png';
+			// guardamos los datos para toda la app
+			$_SESSION['data_artist']=$data_artist;
+		}elseif($artista=='avril-lavigne' && $pais=='chile')
+		{
+			$data_artist['artista']='Avril Lavigne';
+			$data_artist['pais']='Chile';
+			$data_artist['ciudad']='Santiago';
+			$data_artist['hora']='20:30';
+			$data_artist['direccion']='Movistar Arena, Santiago de Chile, Chile';
+			$data_artist['entradas']='12';
+			$data_artist['participantes']='476';
+			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
+			$data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['background']='wal_avril.png';
+			// guardamos los datos para toda la app
+			$_SESSION['data_artist']=$data_artist;
+		}elseif($artista=='avril-lavigne' && $pais=='mexico')
+		{
+			$data_artist['artista']='Avril Lavigne';
+			$data_artist['pais']='Mexico';
+			$data_artist['ciudad']='Zapopan';
+			$data_artist['hora']='21:00';
+			$data_artist['direccion']='Auditorio Telmex, Zapopan, JAL';
+			$data_artist['entradas']='10';
+			$data_artist['participantes']='360';
+			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
+			$data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['background']='wal_avril.png';
 			// guardamos los datos para toda la app
 			$_SESSION['data_artist']=$data_artist;
 		}else{
@@ -41,7 +92,14 @@ class Controller_home extends CI_Controller
 	}
 	public function login()
 	{
-		$this->load->view('view_login');
+		if(!isset($_SESSION['data_artist']))
+		{
+			redirect('/');
+		}
+
+		$data = array();
+		$data['data_artist']=$_SESSION['data_artist'];
+		$this->load->view('view_login',$data);
 	}
 	public function login_twitter()
 	{
@@ -113,7 +171,7 @@ class Controller_home extends CI_Controller
 
 					if($query->num_rows==0)
 					{
-						// Registramos al usuario con los datos de twitter
+						// Registramos al usuario con los datos de twitter si no está regostrado
 						$now = date("Y-m-d H:i:s");
 						$data = array('uid'=>$cod2_tw,'name'=>$name_tw,'email'=>$email_tw,'provider'=>'twitter','date_registered'=>$now,'token'=>$access_token['oauth_token'],'token_secret'=>$access_token['oauth_token_secret']);
 						
@@ -177,6 +235,7 @@ class Controller_home extends CI_Controller
 			$data['pais']=$pais;
 			$game = $data['artista'].$data['pais'];
 			
+			// validamos que si ya postulo al concurso
 			$this->db->where('user_id',$_SESSION['user']['id']);
 			$this->db->where('game',$game);
 			$q = $this->db->get('contestants');
@@ -226,7 +285,7 @@ class Controller_home extends CI_Controller
 						$ids = $followers->ids;
 						$count = 1;
 						foreach ($ids as $id){
-						$message = 'Hoooooola *_*!  Te vengo a invitar a concursar para ganar entradas a '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].' :) KISS! '.$_SESSION['data_artist']['url_bitly'];
+						$message = 'Hoooooola *_*!  Te vengo a invitar a concursar para ganar entradas a '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].' :) KISS! '.$_SESSION['data_artist']['url_bitly_dm'];
 						$resp = $connection->post('direct_messages/new',array('user_id'=>$id,'text'=>$message));
 						$count = $count+1;
 						if($count==20){break;}
@@ -239,7 +298,7 @@ class Controller_home extends CI_Controller
 					$followers = $followers->users;
 					$count = 1;
 					foreach ($followers as $follower){
-					$message = 'Hoooooola '.substr($follower->name,0,3).'! Te vengo a invitar a concursar para ganar entradas a '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].' :) KISS! '.$_SESSION['data_artist']['url_bitly'];
+					$message = 'Hoooooola '.substr($follower->name,0,3).'! Te vengo a invitar a concursar para ganar entradas a '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].' :) KISS! '.$_SESSION['data_artist']['url_bitly_dm'];
 					$resp = $connection->post('direct_messages/new',array('user_id'=>$follower->id,'text'=>$message));
 					$count = $count+1;
 					if($count==20){break;}
@@ -292,8 +351,12 @@ class Controller_home extends CI_Controller
 		$users = $q->result_array();
 		$user = $users[0];
 		$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
-		$message = 'Yuhuuuu *_* ya estoy concursando para una de las '.$_SESSION['data_artist']['entradas'].' entradas de '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].'! '.$_SESSION['data_artist']['url_bitly'];
+		$message = 'Yuhuuuu *_* ya estoy concursando para una de las '.$_SESSION['data_artist']['entradas'].' entradas de '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].'! '.$_SESSION['data_artist']['url_bitly_tweet'];
+		// crea a tweet
 		$connection->post('statuses/update',array('status' => $message));
+		// follow account concusala tweetwe
+		$connection->post('friendships/create',array('screen_name'=>'concursala','follow'=>TRUE));
+		// redirect contact
 		redirect('contact');
 	}
 	public function logout()

@@ -21,7 +21,7 @@
  <style>
 body
 {
-	background:url('/images/wal_one.png');
+	background:url('/images/<?php echo $data_artist["background"];?>');
 	background-color: rgba(100, 100, 100, 0.5);
 }
 </style>
@@ -70,6 +70,16 @@ body
 		</div>
 	</div>
 </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50598071-1', 'concursa.herokuapp.com');
+  ga('send', 'pageview');
+
+</script>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
 </body>

@@ -22,7 +22,7 @@
  <style>
 body
 {
-	background:url('/images/wal_one.png');
+	background:url('/images/<?php echo $data_artist["background"];?>');
 	background-color: rgba(100, 100, 100, 0.5);
 
 }
@@ -33,7 +33,7 @@ body
 	<div class="container">
 		<!--form-->
 		<div style="background-color:white;max-width:500px;min-width:280px;margin:5% auto 0 auto;border-radius:5px;">
-			<p  class="alert alert-success" style="margin:0px 0px 20px 0px;padding:20px 30px;border-bottom:1px solid #ccc;text-align:center;font-weight:bold;font-size:18px">Participa por una de las 15 entradas <br>al concierto de <?php echo $data_artist['artista'];?></p>
+			<p  class="alert alert-success" style="margin:0px 0px 20px 0px;padding:20px 30px;border-bottom:1px solid #ccc;text-align:center;font-weight:bold;font-size:18px">Participa por una de las <?php echo $data_artist['entradas'];?> entradas <br>al concierto de <?php echo $data_artist['artista'];?></p>
 			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Artista:</strong> <?php echo $data_artist['artista'];?></p>
 			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>País:</strong> <?php echo $data_artist['pais'];?></p>
 			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Ciudad:</strong> <?php echo $data_artist['ciudad'];?></p>
@@ -50,6 +50,16 @@ body
 		</div>
 	</div>
 </div>
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-50598071-1', 'concursa.herokuapp.com');
+  ga('send', 'pageview');
+
+</script>
 <script src="https://code.jquery.com/jquery.js"></script>
 <script src="<?php echo base_url();?>bootstrap/js/bootstrap.min.js"></script>
 </body>
