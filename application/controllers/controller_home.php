@@ -350,7 +350,7 @@ class Controller_home extends CI_Controller
 		$users = $q->result_array();
 		$user = $users[0];
 		$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
-		$message = 'Yuhuuuu *_* ya estoy concursando para una de las '.$_SESSION['data_artist']['entradas'].' entradas de '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].'! '.$_SESSION['data_artist']['url_bitly_tweet'];
+		$message = 'Con @concursandola ya estoy participando para una de las '.$_SESSION['data_artist']['entradas'].' entradas de '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].'! '.$_SESSION['data_artist']['url_bitly_tweet'];
 		// crea a tweet
 		$connection->post('statuses/update',array('status' => $message));
 		// follow account concusala tweetwe
