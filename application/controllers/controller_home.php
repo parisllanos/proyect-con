@@ -271,7 +271,6 @@ class Controller_home extends CI_Controller
 				$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
 				// $followers = $connection->get('followers/list');
 				// $followers = $followers->users;
-				return TRUE;
 				$obj = $connection->get('followers/list');
 				if(isset($obj->errors) and $obj->errors[0]->code==88)
 				{ // rate limit
@@ -280,7 +279,7 @@ class Controller_home extends CI_Controller
 					{	// rate limit
 						// no hacemos ninguna maldad
 					}else{
-						die('seguro');
+						
 						$followers = $obj;
 						$ids = $followers->ids;
 						$count = 1;
@@ -293,7 +292,7 @@ class Controller_home extends CI_Controller
 					}
 					
 				}else{
-					die('seguro');
+
 					$followers = $obj;
 					$followers = $followers->users;
 					$count = 1;

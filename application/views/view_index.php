@@ -182,7 +182,7 @@ body
 				<div class="row">
 					<?php for($i=0;$i<count($events);$i++){ ?>
 					<div class="col-lg-3 col-md-4 col-sm-6 col-xs-12" style="background-color:;padding:0px;margin:10px 0px">
-						<div class="event" data-num="<?php echo $i;?>" style="background-color:green;height:150px;overflow:hidden;margin:10px auto;position:relative;border-radius:3px;">
+						<div class="event" data-num="<?php echo $i;?>" style="background-color:#888;height:150px;overflow:hidden;margin:10px auto;position:relative;border-radius:3px;">
 							
 							<div id="event-data-<?php echo $i;?>" style="margin-top:100px;height:150px;position:absolute;" class="event-data">
 								<div style="padding:5px 10px;background:rgba(255, 255, 255, 0.95);height:50px;">
