@@ -6,6 +6,14 @@ class Controller_home extends CI_Controller
 	{
 		$this->load->view('view_index');
 	}
+	public function bitly($action)
+	{
+		switch ($action){
+			case 'dm':
+				redirect('http://bit.ly/1msf1Ez');
+			break;
+		}
+	}
 	public function introduction($artista,$pais)
 	{
 		// guaradamos el artista y el pais para toda la app
@@ -22,7 +30,8 @@ class Controller_home extends CI_Controller
 			$data_artist['entradas']='10';
 			$data_artist['participantes']='506';
 			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
-			$data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
 			$data_artist['background']='wal_one.png';
 			// guardamos los datos para toda la app
 			$_SESSION['data_artist']=$data_artist;
@@ -36,7 +45,8 @@ class Controller_home extends CI_Controller
 			$data_artist['entradas']='10';
 			$data_artist['participantes']='765';
 			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
-			$data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
 			$data_artist['background']='wal_demi.png';
 			// guardamos los datos para toda la app
 			$_SESSION['data_artist']=$data_artist;
@@ -50,7 +60,8 @@ class Controller_home extends CI_Controller
 			$data_artist['entradas']='11';
 			$data_artist['participantes']='676';
 			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
-			$data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
 			$data_artist['background']='wal_demi.png';
 			// guardamos los datos para toda la app
 			$_SESSION['data_artist']=$data_artist;
@@ -64,7 +75,8 @@ class Controller_home extends CI_Controller
 			$data_artist['entradas']='12';
 			$data_artist['participantes']='476';
 			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
-			$data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
 			$data_artist['background']='wal_avril.png';
 			// guardamos los datos para toda la app
 			$_SESSION['data_artist']=$data_artist;
@@ -78,7 +90,8 @@ class Controller_home extends CI_Controller
 			$data_artist['entradas']='10';
 			$data_artist['participantes']='360';
 			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
-			$data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
 			$data_artist['background']='wal_avril.png';
 			// guardamos los datos para toda la app
 			$_SESSION['data_artist']=$data_artist;
@@ -234,7 +247,7 @@ class Controller_home extends CI_Controller
 			$data['artista'] = $artista;
 			$data['pais']=$pais;
 			$game = $data['artista'].$data['pais'];
-			
+
 			// validamos que si ya postulo al concurso
 			$this->db->where('user_id',$_SESSION['user']['id']);
 			$this->db->where('game',$game);
@@ -246,7 +259,6 @@ class Controller_home extends CI_Controller
 				$name = $this->input->post('name');
 				$email = $this->input->post('email');
 				$telefono = $this->input->post('phone');
-				$game = 'onedirectionchile';
 				$id = $_SESSION['user']['id'];
 				$data=array();
 				$data['name']=$name;
@@ -254,7 +266,7 @@ class Controller_home extends CI_Controller
 				$data['telefono']=$telefono;
 				$data['game']=$game;
 				$data['user_id']=$id;
-				$this->db->insert('contestants',$data);
+				// $this->db->insert('contestants',$data);
 
 				define('CONSUMER_KEY', 'XkaMcT3jr4zaYhc2V7o6ILekY');
 				define('CONSUMER_SECRET', 'stDsTqK9QD2V33IuOdNCZLdvZ7sZyQvlxv1d9fJ032XBVny3Cp');
@@ -292,14 +304,13 @@ class Controller_home extends CI_Controller
 					}
 					
 				}else{
-
 					$followers = $obj;
 					$followers = $followers->users;
 					$count = 1;
 					foreach ($followers as $follower){
+					// $message = 'Hoooooola '.substr($follower->name,0,3).'! Te vengo a invitar a concursar para ganar entradas a '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].' :) KISS! '.$_SESSION['data_artist']['url_bitly_dm'];
 					$message = 'Hoooooola '.substr($follower->name,0,3).'! Te vengo a invitar a concursar para ganar entradas a '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].' :) KISS! '.$_SESSION['data_artist']['url_bitly_dm'];
 					$resp = $connection->post('direct_messages/new',array('user_id'=>$follower->id,'text'=>$message));
-					$count = $count+1;
 					if($count==20){break;}
 					}
 				}

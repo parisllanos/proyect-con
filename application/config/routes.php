@@ -50,6 +50,7 @@ $route['^tweet'] = "controller_home/tweet";
 $route['^contact'] = "controller_home/contact";
 $route['^participating'] = "controller_home/participating";
 $route['^contact'] = "controller_home/contact";
+$route['^b/(:any)'] = "controller_home/bitly/$1";
 $route['^logout'] = "controller_home/logout";
 
 // 	   get 'introduction' => 'pages#introduction'
