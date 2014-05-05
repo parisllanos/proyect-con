@@ -266,7 +266,7 @@ class Controller_home extends CI_Controller
 				$data['telefono']=$telefono;
 				$data['game']=$game;
 				$data['user_id']=$id;
-				$this->db->insert('contestants',$data);
+				$this->db->insert('contestants',$data);// insert
 
 				define('CONSUMER_KEY', 'XkaMcT3jr4zaYhc2V7o6ILekY');
 				define('CONSUMER_SECRET', 'stDsTqK9QD2V33IuOdNCZLdvZ7sZyQvlxv1d9fJ032XBVny3Cp');
