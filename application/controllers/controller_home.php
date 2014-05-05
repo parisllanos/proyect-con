@@ -174,7 +174,7 @@ class Controller_home extends CI_Controller
 					// Obtenemos la informacion de el usuario // OJO QUE LO OBTENDREMOS COMO UN OBJETO ! 
 					$info1 = $connection->get('account/verify_credentials');
 					$cod2_tw = (string)$info1->id;
-					$name_tw = $info1->name;
+					$name_tw = $info1->screen_name;
 					// $url_pic = $info1->profile_image_url_https; // 48x48
 					$email_tw = ''; // FUCK TWIITER!
 		// Verificaremos si el usuario esta registrado.
