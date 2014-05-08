@@ -27,7 +27,7 @@ body
 }
 .container-background
 {
-	background:url('<?php echo base_url();?>images/pattern-1.png') #18bc9c;
+	background:url('/images/pattern-1.png') #18bc9c;
 	/*background-color:#18bc9c;*/
 }
 .event-data
@@ -147,6 +147,7 @@ body
 			$events[0]['entradas']='10';
 			$events[0]['foto_event']='demi_event.png';
 			$events[0]['url']='demi-lovato/chile';
+			$events[0]['termino']='8 de mayo';
 			// onedirectionchile
 			$events[1]['name']='Demi Lovato';
 			$events[1]['pais']='Mexico';
@@ -154,6 +155,7 @@ body
 			$events[1]['entradas']='11';
 			$events[1]['foto_event']='demi_event.png';
 			$events[1]['url']='demi-lovato/mexico';
+			$events[1]['termino']='8 de mayo';
 			// onedirectionchile
 			$events[2]['name']='Avril Lavigne';
 			$events[2]['pais']='Chile';
@@ -161,6 +163,7 @@ body
 			$events[2]['entradas']='12';
 			$events[2]['foto_event']='avril_event.png';
 			$events[2]['url']='avril-lavigne/chile';
+			$events[2]['termino']='8 de mayo';
 			// onedirectionchile
 			$events[3]['name']='Avril Lavigne';
 			$events[3]['pais']='Mexico';
@@ -168,6 +171,14 @@ body
 			$events[3]['entradas']='10';
 			$events[3]['foto_event']='avril_event.png';
 			$events[3]['url']='avril-lavigne/mexico';
+			$events[3]['termino']='8 de mayo';
+			//iphone
+			$events[4]['name']='Iphone 5s doraro';
+			$events[4]['pais']='Chile';
+			$events[4]['participantes']='763';
+			$events[4]['foto_event']='iphone_event.png';
+			$events[4]['url']='iphone-5s-dorado/chile';
+			$events[4]['termino']='20 de mayo';
 		?>
 		<!---->
 		<!--events-->
@@ -187,7 +198,7 @@ body
 								<div style="clear:both"></div>
 								</div>
 								<div style="height:100px;text-align:center;border-top:1px solid #ccc;background: rgba(255, 255, 255, 0.9);">
-									<p style="font-weight:bold;font-size:13px;margin:5px 0 0 0;padding:0">Entradas disponibles: <?php echo $events[$i]['entradas'];?></p>
+									<p style="font-weight:bold;font-size:13px;margin:5px 0 0 0;padding:0">Fecha de termino: <?php echo $events[$i]['termino'];?></p>
 									<a href="/introduction/<?php echo $events[$i]['url'];?>">
 									<button class="btn btn-success" style="margin:10px 0 0 0;">Participar</button>
 									</a>

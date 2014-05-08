@@ -35,7 +35,7 @@ body
 			<p  class="alert alert-success" style="margin:0px 0px 20px 0px;padding:20px 30px;border-bottom:1px solid #ccc;text-align:center;font-weight:bold;font-size:18px">Comparte un tweet</p>
 			<p style="margin:5px 0px;padding:0px 30px;font-size:16px;color:#333;text-align:center"><strong>Paso 2</strong></p>
 			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333;text-align:center">Debes apretar el boton "tweet" de abajo, el cual realizara automaticamente un tweet con el el siguiente contenido: <br>
-			<strong>"Estoy concursando para una de las <?php echo $data_artist['entradas'];?> entradas de <?php echo $data_artist['artista'];?>! <br> Y tu, que esperas?"</strong></p>
+			<strong>"Estoy concursando para <?php echo $data_artist['participa'];?> <br> Y tu, que esperas?"</strong></p>
 			<div style="text-align:center;border-top:1px solid #ccc;padding:20px 0;margin:20px 0 0 0">
 				<form method="post" action="#">
 					<input type="hidden" name="tk" value="<?php echo $tk;?>">

@@ -22,25 +22,32 @@
  <style>
 body
 {
-	background:url('/images/<?php echo $data_artist["background"];?>');
-	background-color: rgba(100, 100, 100, 0.5);
 
+	background:url('/images/<?php echo $data_artist["background"];?>');
+}
+.container-background
+{
+	/*background:url('/images/back.png') #777;*/
+	/*background:url('/images/pattern-1.png') #777;*/
+	/*background-color:#18bc9c;*/
 }
 </style>
 </head>
 <body>
 <div class="container_wrapper">
+	<div class="container-background">
 	<div class="container">
 		<!--form-->
 		<div style="background-color:white;max-width:500px;min-width:280px;margin:5% auto 0 auto;border-radius:5px;">
-			<p  class="alert alert-success" style="margin:0px 0px 20px 0px;padding:20px 30px;border-bottom:1px solid #ccc;text-align:center;font-weight:bold;font-size:18px">Participa por una de las <?php echo $data_artist['entradas'];?> entradas <br>al concierto de <?php echo $data_artist['artista'];?></p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Artista:</strong> <?php echo $data_artist['artista'];?></p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>País:</strong> <?php echo $data_artist['pais'];?></p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Ciudad:</strong> <?php echo $data_artist['ciudad'];?></p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Hora del evento:</strong> <?php echo $data_artist['hora'];?></p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Dirección:</strong> <?php echo $data_artist['direccion'];?></p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Entradas disponibles para participar:</strong> <?php echo $data_artist['entradas'];?> entradas</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Participantes:</strong> <?php echo $data_artist['participantes'];?></p>
+			<p  class="alert alert-success" style="margin:0px 0px 20px 0px;padding:20px 30px;border-bottom:1px solid #ccc;text-align:center;font-weight:bold;font-size:18px">Participa por <?php echo $data_artist['participa'];?> en <?php echo $data_artist['pais'];?>! </p>
+			<?php echo $data_artist['descripcion'];?>
+			<!-- <p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Artista:</strong> <?php echo $data_artist['artista'];?></p> -->
+			<!-- <p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>País:</strong> <?php echo $data_artist['pais'];?></p> -->
+			<!-- <p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Ciudad:</strong> <?php echo $data_artist['ciudad'];?></p> -->
+			<!-- <p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Hora del evento:</strong> <?php echo $data_artist['hora'];?></p> -->
+			<!-- <p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Dirección:</strong> <?php echo $data_artist['direccion'];?></p> -->
+			<!-- <p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Entradas disponibles para participar:</strong> <?php echo $data_artist['entradas'];?> entradas</p> -->
+			<!-- <p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Participantes:</strong> <?php echo $data_artist['participantes'];?></p> -->
 			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>¿Como participar?</strong><br>Participar es muy sencillo, solo debes tener una cuenta de twitter y seguir los siguientes 3 pasos! </p>
 			<div style="text-align:center;border-top:1px solid #ccc;padding:20px 0;margin:20px 0 0 0">
 			<a href="/login">
@@ -49,6 +56,8 @@ body
 			</div>
 		</div>
 	</div>
+	<div style="height:100px;"></div>
+</div>
 </div>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
