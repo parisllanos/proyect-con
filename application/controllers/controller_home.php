@@ -21,21 +21,7 @@ class Controller_home extends CI_Controller
 		$_SESSION['url_pais']=$pais;
 
 		// creamos los datos para toda la app
-		if($artista=='one-direction' && $pais=='uruguay'){
-			$data_artist['artista']='One Direction';
-			$data_artist['pais']='Uruguay';
-			$data_artist['ciudad']='Montevideo';
-			$data_artist['hora']='20:00';
-			$data_artist['direccion']='Estadio Centenario, Montevideo,URY, Uruguay';
-			$data_artist['entradas']='10';
-			$data_artist['participantes']='506';
-			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
-			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
-			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
-			$data_artist['background']='wal_one.png';
-			// guardamos los datos para toda la app
-			$_SESSION['data_artist']=$data_artist;
-		}elseif($artista=='demi-lovato' && $pais=='chile')
+		if($artista=='demi-lovato' && $pais=='chile')
 		{
 			$data_artist['artista']='Demi Lovato';
 			$data_artist['pais']='Chile';

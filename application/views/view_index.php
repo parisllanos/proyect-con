@@ -141,13 +141,6 @@ body
 		<?php 
 			$events = array(); 
 			// onedirectionchile
-			$events[0]['name']='One Direction';
-			$events[0]['pais']='Uruguay';
-			$events[0]['participantes']='506';
-			$events[0]['entradas']='10';
-			$events[0]['foto_event']='one_event.png';
-			$events[0]['url']='one-direction/uruguay';
-			// onedirectionchile
 			$events[1]['name']='Demi Lovato';
 			$events[1]['pais']='Chile';
 			$events[1]['participantes']='765';
