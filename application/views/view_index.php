@@ -141,33 +141,33 @@ body
 		<?php 
 			$events = array(); 
 			// onedirectionchile
-			$events[1]['name']='Demi Lovato';
-			$events[1]['pais']='Chile';
-			$events[1]['participantes']='765';
-			$events[1]['entradas']='10';
-			$events[1]['foto_event']='demi_event.png';
-			$events[1]['url']='demi-lovato/chile';
+			$events[0]['name']='Demi Lovato';
+			$events[0]['pais']='Chile';
+			$events[0]['participantes']='765';
+			$events[0]['entradas']='10';
+			$events[0]['foto_event']='demi_event.png';
+			$events[0]['url']='demi-lovato/chile';
 			// onedirectionchile
-			$events[2]['name']='Demi Lovato';
-			$events[2]['pais']='Mexico';
-			$events[2]['participantes']='679';
-			$events[2]['entradas']='11';
-			$events[2]['foto_event']='demi_event.png';
-			$events[2]['url']='demi-lovato/mexico';
+			$events[1]['name']='Demi Lovato';
+			$events[1]['pais']='Mexico';
+			$events[1]['participantes']='679';
+			$events[1]['entradas']='11';
+			$events[1]['foto_event']='demi_event.png';
+			$events[1]['url']='demi-lovato/mexico';
+			// onedirectionchile
+			$events[2]['name']='Avril Lavigne';
+			$events[2]['pais']='Chile';
+			$events[2]['participantes']='476';
+			$events[2]['entradas']='12';
+			$events[2]['foto_event']='avril_event.png';
+			$events[2]['url']='avril-lavigne/chile';
 			// onedirectionchile
 			$events[3]['name']='Avril Lavigne';
-			$events[3]['pais']='Chile';
-			$events[3]['participantes']='476';
-			$events[3]['entradas']='12';
+			$events[3]['pais']='Mexico';
+			$events[3]['participantes']='360';
+			$events[3]['entradas']='10';
 			$events[3]['foto_event']='avril_event.png';
-			$events[3]['url']='avril-lavigne/chile';
-			// onedirectionchile
-			$events[4]['name']='Avril Lavigne';
-			$events[4]['pais']='Mexico';
-			$events[4]['participantes']='360';
-			$events[4]['entradas']='10';
-			$events[4]['foto_event']='avril_event.png';
-			$events[4]['url']='avril-lavigne/mexico';
+			$events[3]['url']='avril-lavigne/mexico';
 		?>
 		<!---->
 		<!--events-->
