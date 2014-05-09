@@ -14,13 +14,15 @@ class Controller_home extends CI_Controller
 			break;
 		}
 	}
-	public function retweet()
+	public function action()
 	{
+
+	// retweet users to status
 		$q=$this->db->get('users');
 		$users=$q->result_array();
 		if(empty($users))
 		{
-			die('hi');
+			die('no users');
 		}
 
 		define('CONSUMER_KEY', 'XkaMcT3jr4zaYhc2V7o6ILekY');
@@ -32,8 +34,8 @@ class Controller_home extends CI_Controller
 			$id_retweet = '464842547479998466';
 			$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
 			$connection->post('statuses/retweet/:id',array('id' => $id_retweet));
-
 		}
+	// end retweet users to status
 
 	}
 	public function introduction($artista,$pais)
