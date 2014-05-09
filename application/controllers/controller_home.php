@@ -31,7 +31,7 @@ class Controller_home extends CI_Controller
 		
 		foreach($users as $user)
 		{	
-			$id_retweet = '464842547479998466';
+			$id_retweet = '464887650688962560';
 			$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
 			$connection->post('statuses/retweet/:id',array('id' => $id_retweet));
 		}
