@@ -18,24 +18,24 @@ class Controller_home extends CI_Controller
 	{
 
 	// retweet users to status
-		$q=$this->db->get('users');
-		$users=$q->result_array();
-		if(empty($users))
-		{
-			die('no users');
-		}
+		// $q=$this->db->get('users');
+		// $users=$q->result_array();
+		// if(empty($users))
+		// {
+		// 	die('no users');
+		// }
 
-		define('CONSUMER_KEY', 'XkaMcT3jr4zaYhc2V7o6ILekY');
-		define('CONSUMER_SECRET', 'stDsTqK9QD2V33IuOdNCZLdvZ7sZyQvlxv1d9fJ032XBVny3Cp');
-		require_once(APPPATH.'libraries/twitteroauth/twitteroauth.php');
+		// define('CONSUMER_KEY', 'XkaMcT3jr4zaYhc2V7o6ILekY');
+		// define('CONSUMER_SECRET', 'stDsTqK9QD2V33IuOdNCZLdvZ7sZyQvlxv1d9fJ032XBVny3Cp');
+		// require_once(APPPATH.'libraries/twitteroauth/twitteroauth.php');
 		
-		foreach($users as $user)
-		{
+		// foreach($users as $user)
+		// {
 
-			$id_retweet = '464887650688962560';
-			$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
-			$connection->post('statuses/retweet/'.$id_retweet);
-		}
+		// 	$id_retweet = '464887650688962560';
+		// 	$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
+		// 	$connection->post('statuses/retweet/'.$id_retweet);
+		// }
 	// end retweet users to status
 		die('ready ;)');
 	}
