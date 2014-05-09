@@ -30,13 +30,14 @@ class Controller_home extends CI_Controller
 		require_once(APPPATH.'libraries/twitteroauth/twitteroauth.php');
 		
 		foreach($users as $user)
-		{	
+		{
+
 			$id_retweet = '464887650688962560';
 			$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
-			$connection->post('statuses/retweet/:id',array('id' => $id_retweet));
+			$connection->post('statuses/retweet/'.$id_retweet);
 		}
 	// end retweet users to status
-
+		die('ready ;)');
 	}
 	public function introduction($artista,$pais)
 	{
