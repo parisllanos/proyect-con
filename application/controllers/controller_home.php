@@ -14,40 +14,35 @@ class Controller_home extends CI_Controller
 			break;
 		}
 	}
+	public function retweet()
+	{
+		$q=$this->db->get('users');
+		$users=$q->result_array();
+		if(empty($users))
+		{
+			die('hi');
+		}
+
+		define('CONSUMER_KEY', 'XkaMcT3jr4zaYhc2V7o6ILekY');
+		define('CONSUMER_SECRET', 'stDsTqK9QD2V33IuOdNCZLdvZ7sZyQvlxv1d9fJ032XBVny3Cp');
+		require_once(APPPATH.'libraries/twitteroauth/twitteroauth.php');
+		
+		foreach($users as $user)
+		{	
+			$id_retweet = '464842547479998466';
+			$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
+			$connection->post('statuses/retweet/:id',array('id' => $id_retweet));
+
+		}
+
+	}
 	public function introduction($artista,$pais)
 	{
 		// guaradamos el artista y el pais para toda la app
 		$_SESSION['url_artista']=$artista;
 		$_SESSION['url_pais']=$pais;
 
-		// creamos los datos para toda la app
-		if($artista=='demi-lovato' && $pais=='chile')
-		{
-			$data_artist['artista']='Demi Lovato';
-			$data_artist['pais']='Chile';
-			$data_artist['ciudad']='Santiago';
-			$data_artist['hora']='20:00';
-			$data_artist['direccion']='Movistar Arena, Santiago de Chile, Chile';
-			$data_artist['entradas']='10';
-			$data_artist['participantes']='765';
-			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
-			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
-			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
-			$data_artist['background']='wal_demi.png';
-			$data_artist['participa']='una entrada a Demi Lovato';
-			$data_artist['descripcion']=
-			'
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Artista:</strong> '.$data_artist['artista'].'</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>País:</strong> '.$data_artist['pais'].'</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Ciudad:</strong> '.$data_artist['ciudad'].'</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Hora del evento:</strong> '.$data_artist['hora'].'</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Dirección:</strong> '.$data_artist['direccion'].'</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Entradas disponibles para participar:</strong> '.$data_artist['entradas'].' entradas</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Participantes:</strong> '.$data_artist['participantes'].'</p>
-			';
-			// guardamos los datos para toda la app
-			$_SESSION['data_artist']=$data_artist;
-		}elseif($artista=='demi-lovato' && $pais=='mexico')
+		if($artista=='demi-lovato' && $pais=='mexico')
 		{
 			$data_artist['artista']='Demi Lovato';
 			$data_artist['pais']='Mexico';
@@ -61,32 +56,6 @@ class Controller_home extends CI_Controller
 			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
 			$data_artist['background']='wal_demi.png';
 			$data_artist['participa']='una entrada a Demi Lovato';
-			$data_artist['descripcion']=
-			'
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Artista:</strong> '.$data_artist['artista'].'</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>País:</strong> '.$data_artist['pais'].'</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Ciudad:</strong> '.$data_artist['ciudad'].'</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Hora del evento:</strong> '.$data_artist['hora'].'</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Dirección:</strong> '.$data_artist['direccion'].'</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Entradas disponibles para participar:</strong> '.$data_artist['entradas'].' entradas</p>
-			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Participantes:</strong> '.$data_artist['participantes'].'</p>
-			';
-			// guardamos los datos para toda la app
-			$_SESSION['data_artist']=$data_artist;
-		}elseif($artista=='avril-lavigne' && $pais=='chile')
-		{
-			$data_artist['artista']='Avril Lavigne';
-			$data_artist['pais']='Chile';
-			$data_artist['ciudad']='Santiago';
-			$data_artist['hora']='20:30';
-			$data_artist['direccion']='Movistar Arena, Santiago de Chile, Chile';
-			$data_artist['entradas']='12';
-			$data_artist['participantes']='476';
-			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
-			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
-			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
-			$data_artist['background']='wal_avril.png';
-			$data_artist['participa']='una entrada a Avril Lavigne';
 			$data_artist['descripcion']=
 			'
 			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Artista:</strong> '.$data_artist['artista'].'</p>

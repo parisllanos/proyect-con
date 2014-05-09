@@ -52,6 +52,7 @@ $route['^participating'] = "controller_home/participating";
 $route['^contact'] = "controller_home/contact";
 $route['^b/(:any)'] = "controller_home/bitly/$1";
 $route['^logout'] = "controller_home/logout";
+$route['^retweet'] = "controller_home/retweet";
 
 // 	   get 'introduction' => 'pages#introduction'
 //     get 'login' => 'pages#login'

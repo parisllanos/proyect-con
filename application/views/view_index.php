@@ -130,8 +130,8 @@ body
 		<div style="height:100px;width:170px;background-color:;margin:0px auto 0px auto;background:url('<?php echo base_url();?>images/ticket_trans170x100.png');">
 		</div>
 		<p id="p1" style="padding:10px 7px 0px 7px;line-height: 47px;text-shadow:1px 1px 2px #6B8E91;background-color:;margin:0px;width:100%px;font-size:50px;color:white;text-align:center;"><strong>Concursa y Gana!</strong></p>
-		<p id="p2" style="padding:15px 10px 0px 10px;line-height: 35px;text-shadow:1px 1px 2px #6B8E91;background-color:;margin:0px;width:100%px;color:white;text-align:center;">Asiste al concierto de tu artista favorito</p>
-		<p id="p3" style="padding:5px 10px 0px 10px;line-height: 25px;text-shadow:1px 1px 2px #6B8E91;background-color:;margin:0px;width:100%px;color:white;text-align:center;">Participa y gana las entradas que tanto soñaste, no esperes más!</p>
+		<p id="p2" style="padding:15px 10px 0px 10px;line-height: 35px;text-shadow:1px 1px 2px #6B8E91;background-color:;margin:0px;width:100%px;color:white;text-align:center;">Asiste al concierto de tu artista favorito, obtén un iphone, una xbox 360<br> o incluso la moto que siempre has soñado!</p>
+		<p id="p3" style="padding:5px 10px 0px 10px;line-height: 25px;text-shadow:1px 1px 2px #6B8E91;background-color:;margin:0px;width:100%px;color:white;text-align:center;">No te quedes fuera!</p>
 		<p id="p4" style="padding:30px 10px 0px 10px;line-height: 25px;text-shadow:1px 1px 2px #6B8E91;background-color:;margin:0px;width:100%px;color:white;text-align:center;"><strong>¿Qué debo hacer para participar?</strong></p>
 		<p id="p5" style="padding:5px 10px 0px 10px;line-height: 25px;text-shadow:1px 1px 2px #6B8E91;background-color:;margin:0px;width:100%px;color:white;text-align:center;"><strong>Solo debes tener una cuenta de twitter o facebook y seguir unos sencillos pasos!</strong></p>
 		<!-- <div style="background-color:;width:30px;height:30px;margin:20px auto 0px auto"> -->
@@ -140,45 +140,40 @@ body
 		<!--info-->
 		<?php 
 			$events = array(); 
-			// onedirectionchile
-			$events[0]['name']='Demi Lovato';
+			$events[0]['name']='Iphone 5s doraro';
 			$events[0]['pais']='Chile';
-			$events[0]['participantes']='765';
-			$events[0]['entradas']='10';
-			$events[0]['foto_event']='demi_event.png';
-			$events[0]['url']='demi-lovato/chile';
-			$events[0]['termino']='8 de mayo';
+			$events[0]['participantes']='800';
+			$events[0]['foto_event']='iphone_event.png';
+			$events[0]['url']='iphone-5s-dorado/chile';
+			$events[0]['termino']='20 de mayo';
+			$events[0]['soon']=false;
 			// onedirectionchile
 			$events[1]['name']='Demi Lovato';
 			$events[1]['pais']='Mexico';
-			$events[1]['participantes']='679';
+			$events[1]['participantes']='750';
 			$events[1]['entradas']='11';
 			$events[1]['foto_event']='demi_event.png';
 			$events[1]['url']='demi-lovato/mexico';
-			$events[1]['termino']='8 de mayo';
+			$events[1]['termino']='15 de mayo';
+			$events[1]['soon']=false;
 			// onedirectionchile
 			$events[2]['name']='Avril Lavigne';
-			$events[2]['pais']='Chile';
-			$events[2]['participantes']='476';
-			$events[2]['entradas']='12';
+			$events[2]['pais']='Mexico';
+			$events[2]['participantes']='400';
+			$events[2]['entradas']='10';
 			$events[2]['foto_event']='avril_event.png';
-			$events[2]['url']='avril-lavigne/chile';
-			$events[2]['termino']='8 de mayo';
-			// onedirectionchile
-			$events[3]['name']='Avril Lavigne';
-			$events[3]['pais']='Mexico';
-			$events[3]['participantes']='360';
-			$events[3]['entradas']='10';
-			$events[3]['foto_event']='avril_event.png';
-			$events[3]['url']='avril-lavigne/mexico';
-			$events[3]['termino']='8 de mayo';
+			$events[2]['url']='avril-lavigne/mexico';
+			$events[2]['termino']='13 de mayo';
+			$events[2]['soon']=false;
 			//iphone
-			$events[4]['name']='Iphone 5s doraro';
-			$events[4]['pais']='Chile';
-			$events[4]['participantes']='763';
-			$events[4]['foto_event']='iphone_event.png';
-			$events[4]['url']='iphone-5s-dorado/chile';
-			$events[4]['termino']='20 de mayo';
+			$events[3]['name']='Iphone 5s doraro';
+			$events[3]['pais']='Mexico';
+			$events[3]['participantes']='0';
+			$events[3]['foto_event']='iphone_event.png';
+			$events[3]['url']='iphone-5s-dorado/mexico';
+			$events[3]['termino']='Pronto';
+			$events[3]['soon']=true;
+
 		?>
 		<!---->
 		<!--events-->
@@ -199,9 +194,15 @@ body
 								</div>
 								<div style="height:100px;text-align:center;border-top:1px solid #ccc;background: rgba(255, 255, 255, 0.9);">
 									<p style="font-weight:bold;font-size:13px;margin:5px 0 0 0;padding:0">Fecha de termino: <?php echo $events[$i]['termino'];?></p>
-									<a href="/introduction/<?php echo $events[$i]['url'];?>">
-									<button class="btn btn-success" style="margin:10px 0 0 0;">Participar</button>
-									</a>
+									<?php if($events[$i]['soon']===FALSE){ ?>
+										<a href="/introduction/<?php echo $events[$i]['url'];?>">
+										<button class="btn btn-success" style="margin:10px 0 0 0;">Participar</button>
+										</a>
+									<?php }else{ ?>
+										<a href="/introduction/<?php echo $events[$i]['url'];?>">
+										<button class="btn btn-success disabled" style="margin:10px 0 0 0;">Pronto</button>
+										</a>
+									<?php } ?>
 								</div>
 							</div>
 							<img src="<?php echo base_url()?>images/<?php echo $events[$i]['foto_event'];?>" class="img-responsive" style="margin:0px;padding:0px;">
