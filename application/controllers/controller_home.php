@@ -123,6 +123,73 @@ iCloud-su contenido en todos los dispositivos</p>
 			';
 			// guardamos los datos para toda la app
 			$_SESSION['data_artist']=$data_artist;
+		}elseif($artista=='xbox-360' && $pais=='chile')
+		{
+			$data_artist['artista']='Xbox 360';
+			$data_artist['pais']='Chile';
+			$data_artist['participantes']='400';
+			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
+			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
+			$data_artist['background']='wall_xbox.png';
+			$data_artist['participa']='una increible Xbox 360';
+			$data_artist['descripcion']=
+			'
+			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Modelo:</strong> '.$data_artist['artista'].'</p>
+			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Descripcion:</strong><br>Xbox 360 te aportan una experiencia de juego y entretenimiento total. La mayor biblioteca de juegos, incluidos títulos que te meten hasta las trancas en Kinect. Además, toda la familia puede ver pelis en HD, series, acontecimientos en directo, música, deportes y más… y en todos los dispositivos.5 Xbox 360 es el centro de tu universo de juegos y entretenimiento. 2</p>
+			';
+			// guardamos los datos para toda la app
+			$_SESSION['data_artist']=$data_artist;
+		}elseif($artista=='plasma-hd' && $pais=='chile')
+		{
+			$data_artist['artista']='Plasma HD';
+			$data_artist['pais']='Chile';
+			$data_artist['participantes']='130';
+			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
+			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
+			$data_artist['background']='wall_tele.png';
+			$data_artist['participa']='un increible plasma HD 56 pulgadas';
+			$data_artist['descripcion']=
+			'
+			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Modelo:</strong> '.$data_artist['artista'].'</p>
+			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Descripcion:</strong><br> Notebook Samsung 14" Intel Core i7 4GB 500GB
+			<br>Marca: Samsung
+Modelo: NP530U3C-K02
+Sistema Operativo:Windows 8
+Procesador: Intel Core i7 3537U
+Tarjeta gráfica: Intel® HD Graphics 4000 Shared
+Pantalla: 14’’ HD LED (1366 x 768), anti-reflejo
+Memoria RAM: 4GB DDR3 de memoria del sistema a 1600MHz (en BD + 4GB X 1)
+Disco Duro : 500GB Slim (5.4K) E-CACHE 24GB
+			';
+			// guardamos los datos para toda la app
+			$_SESSION['data_artist']=$data_artist;
+		}elseif($artista=='notebook' && $pais=='chile')
+		{
+			$data_artist['artista']='Notebook Samsung 14';
+			$data_artist['pais']='Chile';
+			$data_artist['participantes']='130';
+			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
+			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
+			$data_artist['background']='wall_note.png';
+			$data_artist['participa']='un increible Notebook Samsung 14';
+			$data_artist['descripcion']=
+			'
+			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Modelo:</strong> '.$data_artist['artista'].'</p>
+			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Descripcion:</strong><br> Notebook Samsung 14" Intel Core i7 4GB 500GB
+			<br>Marca: Samsung
+Modelo: NP530U3C-K02
+Sistema Operativo:Windows 8
+Procesador: Intel Core i7 3537U
+Tarjeta gráfica: Intel® HD Graphics 4000 Shared
+Pantalla: 14’’ HD LED (1366 x 768), anti-reflejo
+Memoria RAM: 4GB DDR3 de memoria del sistema a 1600MHz (en BD + 4GB X 1)
+Disco Duro : 500GB Slim (5.4K) E-CACHE 24GB
+			';
+			// guardamos los datos para toda la app
+			$_SESSION['data_artist']=$data_artist;
 		}else{
 			redirect('/');
 		}

@@ -15,9 +15,9 @@
 |
 */
 // local
-// $config['base_url']	= 'http://www.concursa.la';
+$config['base_url']	= 'http://www.concursa.la';
 // heroku
-$config['base_url']	= 'http://concursa.herokuapp.com';
+// $config['base_url']	= 'http://concursa.herokuapp.com';
 //
 /*
 |--------------------------------------------------------------------------

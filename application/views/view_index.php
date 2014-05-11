@@ -173,6 +173,30 @@ body
 			$events[3]['url']='iphone-5s-dorado/mexico';
 			$events[3]['termino']='Pronto';
 			$events[3]['soon']=true;
+			//
+			$events[4]['name']='Xbox 360';
+			$events[4]['pais']='Chile';
+			$events[4]['participantes']='400';
+			$events[4]['foto_event']='xbox_event.png';
+			$events[4]['url']='xbox-360/chile';
+			$events[4]['termino']='30 mayo';
+			$events[4]['soon']=false;
+			//
+			$events[5]['name']='Plasma HD';
+			$events[5]['pais']='Chile';
+			$events[5]['participantes']='130';
+			$events[5]['foto_event']='tele_event.png';
+			$events[5]['url']='plasma-hd/chile';
+			$events[5]['termino']='30 mayo';
+			$events[5]['soon']=false;
+			//
+			$events[6]['name']='Notebook Samsung 14';
+			$events[6]['pais']='Chile';
+			$events[6]['participantes']='318';
+			$events[6]['foto_event']='note_event.png';
+			$events[6]['url']='notebook/chile';
+			$events[6]['termino']='28 mayo';
+			$events[6]['soon']=false;
 
 		?>
 		<!---->
