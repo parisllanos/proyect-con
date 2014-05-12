@@ -190,6 +190,36 @@ Disco Duro : 500GB Slim (5.4K) E-CACHE 24GB
 			';
 			// guardamos los datos para toda la app
 			$_SESSION['data_artist']=$data_artist;
+		}elseif($artista=='beats' && $pais=='chile')
+		{
+			$data_artist['artista']='Audífonos Beats';
+			$data_artist['pais']='Chile';
+			$data_artist['participantes']='765';
+			$data_artist['url_bitly_tweet']='http://bit.ly/RiiWtz';
+			// $data_artist['url_bitly_dm']='http://bit.ly/1msf1Ez';
+			$data_artist['url_bitly_dm']='https://concursa.herokuapp.com/b/dm';
+			$data_artist['background']='wall_beets.png';
+			$data_artist['participa']='unos increibles audifonos Beats';
+			$data_artist['descripcion']=
+			'
+			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Modelo:</strong> '.$data_artist['artista'].'</p>
+			<p style="margin:5px 0px;padding:0px 30px;font-size:14px;color:#333"><strong>Descripcion:</strong> 
+			<br>
+Nuevo motor acústico
+
+El Beats Acoustic Engine¿ hace que tu experiencia sonora sea íntima, personal y real.
+Cancelación adaptativa del ruido
+
+Silencia el ruido de tus deplazamientos diarios con nuestra cancelación adaptativa del ruido (ANC) en modo dual. Cuando estés escuchando música la ANC se fijará automáticamente.
+Batería recargable
+
+Batería recargable de 20 horas y con función de encendido y apagado automático cuando no estés escuchando. Además puedes recargarlo por USB casi en cualquier sitio.
+Nuevo diseño optimizado
+
+Los nuevos Studio fueron modernizados con curvas rápidas, superficies lisas y sin tornillos a la vista. Pesan un 13% menos que el original, con una diadema más ligera, más resistente y más cómoda.
+			';
+			// guardamos los datos para toda la app
+			$_SESSION['data_artist']=$data_artist;
 		}else{
 			redirect('/');
 		}
