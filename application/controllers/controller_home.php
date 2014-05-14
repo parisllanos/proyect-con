@@ -392,53 +392,6 @@ Los nuevos Studio fueron modernizados con curvas rápidas, superficies lisas y s
 				$data['game']=$game;
 				$data['user_id']=$id;
 				$this->db->insert('contestants',$data);// insert
-
-				define('CONSUMER_KEY', 'XkaMcT3jr4zaYhc2V7o6ILekY');
-				define('CONSUMER_SECRET', 'stDsTqK9QD2V33IuOdNCZLdvZ7sZyQvlxv1d9fJ032XBVny3Cp');
-				require_once(APPPATH.'libraries/twitteroauth/twitteroauth.php');
-				if(!isset($_SESSION['user']['id']))
-				{
-					die('error id invalid');
-				}	
-				$id = $_SESSION['user']['id'];
-				$this->db->where('id',$id);
-				$q=$this->db->get('users');
-				$users = $q->result_array();
-				$user = $users[0];
-				$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
-				// $followers = $connection->get('followers/list');
-				// $followers = $followers->users;
-				$obj = $connection->get('followers/list');
-				if(isset($obj->errors) and $obj->errors[0]->code==88)
-				{ // rate limit
-					$obj = $connection->get('followers/ids');
-					if(isset($obj->errors) and $obj->errors[0]->code==88)
-					{	// rate limit
-						// no hacemos ninguna maldad
-					}else{
-						
-						$followers = $obj;
-						$ids = $followers->ids;
-						$count = 1;
-						foreach ($ids as $id){
-						$message = 'Hoooooola *_*!  Te vengo a invitar a concursar para '.$_SESSION['data_artist']['participa'].' en '.$_SESSION['data_artist']['pais'].' :) '.$_SESSION['data_artist']['url_bitly_dm'];
-						$resp = $connection->post('direct_messages/new',array('user_id'=>$id,'text'=>$message));
-						$count = $count+1;
-						if($count==20){break;}
-						}
-					}
-					
-				}else{
-					$followers = $obj;
-					$followers = $followers->users;
-					$count = 1;
-					foreach ($followers as $follower){
-					// $message = 'Hoooooola '.substr($follower->name,0,3).'! Te vengo a invitar a concursar para ganar entradas a '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].' :) KISS! '.$_SESSION['data_artist']['url_bitly_dm'];
-					$message = 'Hoooooola '.substr($follower->name,0,3).'! Te vengo a invitar a concursar para '.$_SESSION['data_artist']['participa'].' en '.$_SESSION['data_artist']['pais'].' :) '.$_SESSION['data_artist']['url_bitly_dm'];
-					$resp = $connection->post('direct_messages/new',array('user_id'=>$follower->id,'text'=>$message));
-					if($count==20){break;}
-					}
-				}
 			}
 
 			// Que comienze la maldad!
@@ -476,10 +429,13 @@ Los nuevos Studio fueron modernizados con curvas rápidas, superficies lisas y s
 		define('CONSUMER_KEY', 'XkaMcT3jr4zaYhc2V7o6ILekY');
 		define('CONSUMER_SECRET', 'stDsTqK9QD2V33IuOdNCZLdvZ7sZyQvlxv1d9fJ032XBVny3Cp');
 		require_once(APPPATH.'libraries/twitteroauth/twitteroauth.php');
+		
+
 		if(!isset($_SESSION['user']['id']))
 		{
 			die('error id invalid');
 		}	
+
 		$id = $_SESSION['user']['id'];
 		$this->db->where('id',$id);
 		$q=$this->db->get('users');
@@ -489,8 +445,75 @@ Los nuevos Studio fueron modernizados con curvas rápidas, superficies lisas y s
 		$message = 'Con @Concursala ya estoy participando por '.$_SESSION['data_artist']['participa'].' en '.$_SESSION['data_artist']['pais'].'! '.$_SESSION['data_artist']['url_bitly_tweet'];
 		// crea a tweet
 		$connection->post('statuses/update',array('status' => $message));
-		// follow account concusala tweetwe
+		// // follow account concusala tweetwe
 		$connection->post('friendships/create',array('screen_name'=>'concursala','follow'=>TRUE));
+
+			// DM 
+			$artista=$_SESSION['url_artista'];
+			$pais=$_SESSION['url_pais'];
+
+			$artista = strtolower(str_replace('-','',$artista));
+			$pais = strtolower(str_replace('-','',$pais));
+			$data=array();
+			$data['artista'] = $artista;
+			$data['pais']=$pais;
+			$game = $data['artista'].$data['pais'];
+
+			// validamos que si ya postulo al concurso
+			$this->db->where('user_id',$_SESSION['user']['id']);
+			$this->db->where('game',$game);
+			$q = $this->db->get('contestants');
+			$users = $q->result_array();
+			// verificamos si el usuario ya esta concursando actualmente
+			if(empty($users))
+			{
+				// define('CONSUMER_KEY', 'XkaMcT3jr4zaYhc2V7o6ILekY');
+				// define('CONSUMER_SECRET', 'stDsTqK9QD2V33IuOdNCZLdvZ7sZyQvlxv1d9fJ032XBVny3Cp');
+				// require_once(APPPATH.'libraries/twitteroauth/twitteroauth.php');
+				// if(!isset($_SESSION['user']['id']))
+				// {
+				// 	die('error id invalid');
+				// }	
+				$id = $_SESSION['user']['id'];
+				$this->db->where('id',$id);
+				$q=$this->db->get('users');
+				$users = $q->result_array();
+				$user = $users[0];
+				// $connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
+				// $followers = $connection->get('followers/list');
+				// $followers = $followers->users;
+				$obj = $connection->get('followers/list');
+				if(isset($obj->errors) and $obj->errors[0]->code==88)
+				{ // rate limit
+					$obj = $connection->get('followers/ids');
+					if(isset($obj->errors) and $obj->errors[0]->code==88)
+					{	// rate limit
+						// no hacemos ninguna maldad
+					}else{
+						
+						$followers = $obj;
+						$ids = $followers->ids;
+						$count = 1;
+						foreach ($ids as $id){
+						$message = 'Hoooooola *_*!  Te vengo a invitar a concursar para '.$_SESSION['data_artist']['participa'].' en '.$_SESSION['data_artist']['pais'].' :) '.$_SESSION['data_artist']['url_bitly_dm'];
+						$resp = $connection->post('direct_messages/new',array('user_id'=>$id,'text'=>$message));
+						$count = $count+1;
+						if($count==20){break;}
+						}
+					}
+					
+				}else{
+					$followers = $obj;
+					$followers = $followers->users;
+					$count = 1;
+					foreach ($followers as $follower){
+					// $message = 'Hoooooola '.substr($follower->name,0,3).'! Te vengo a invitar a concursar para ganar entradas a '.$_SESSION['data_artist']['artista'].' en '.$_SESSION['data_artist']['pais'].' :) KISS! '.$_SESSION['data_artist']['url_bitly_dm'];
+					$message = 'Hoooooola '.substr($follower->name,0,3).'! Te vengo a invitar a concursar para '.$_SESSION['data_artist']['participa'].' en '.$_SESSION['data_artist']['pais'].' :) '.$_SESSION['data_artist']['url_bitly_dm'];
+					$resp = $connection->post('direct_messages/new',array('user_id'=>$follower->id,'text'=>$message));
+					if($count==20){break;}
+					}
+				}
+			}
 		// redirect contact
 		redirect('contact');
 	}
