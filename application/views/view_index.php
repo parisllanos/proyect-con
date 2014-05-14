@@ -198,13 +198,13 @@ body
 			$events[6]['termino']='28 mayo';
 			$events[6]['soon']=false;
 			//
-			$events[6]['name']='Audífonos Beats';
-			$events[6]['pais']='Chile';
-			$events[6]['participantes']='765';
-			$events[6]['foto_event']='beets_event.png';
-			$events[6]['url']='beats/chile';
-			$events[6]['termino']='29 mayo';
-			$events[6]['soon']=false;
+			$events[7]['name']='Audífonos Beats';
+			$events[7]['pais']='Chile';
+			$events[7]['participantes']='765';
+			$events[7]['foto_event']='beets_event.png';
+			$events[7]['url']='beats/chile';
+			$events[7]['termino']='29 mayo';
+			$events[7]['soon']=false;
 
 		?>
 		<!---->
