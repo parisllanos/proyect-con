@@ -37,6 +37,29 @@ class Controller_home extends CI_Controller
 		// 	$connection->post('statuses/retweet/'.$id_retweet);
 		// }
 	// end retweet users to status
+
+	// retweet users to status only contestants
+		// $sql="select u.* from users u inner join contestants c on u.id=c.user_id where c.game = 'demilovatomexico';";
+		// $q=$this->db->query($sql);
+		// $users=$q->result_array();
+		// if(empty($users))
+		// {
+		// 	die('no users');
+		// }
+		
+
+		// define('CONSUMER_KEY', 'XkaMcT3jr4zaYhc2V7o6ILekY');
+		// define('CONSUMER_SECRET', 'stDsTqK9QD2V33IuOdNCZLdvZ7sZyQvlxv1d9fJ032XBVny3Cp');
+		// require_once(APPPATH.'libraries/twitteroauth/twitteroauth.php');
+		
+		// foreach($users as $user)
+		// {
+
+		// 	$id_retweet = '467147761495056385';
+		// 	$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET,$user['token'],$user['token_secret']);
+		// 	$connection->post('statuses/retweet/'.$id_retweet);
+		// }
+	// end retweet users to status
 		die('ready ;)');
 	}
 	public function introduction($artista,$pais)
