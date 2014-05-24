@@ -47,24 +47,7 @@
 
 $active_group = 'default';
 $active_record = TRUE;
-// mysql
-// $db['default']['hostname'] = 'localhost';
-// $db['default']['username'] = 'root';
-// $db['default']['password'] = 'root';
-// $db['default']['database'] = 'ticket';
-// $db['default']['dbdriver'] = 'mysql';
-// postgres
-// $db['default']['hostname'] = 'localhost';
-// $db['default']['username'] = 'parisllanos';
-// $db['default']['password'] = '123';
-// $db['default']['database'] = 'concursa';
-// $db['default']['dbdriver'] = 'postgre';
-// heroku
-$db['default']['hostname'] = 'ec2-54-83-43-49.compute-1.amazonaws.com';
-$db['default']['username'] = 'gwnkqvrrwpkwen';
-$db['default']['password'] = 'HF9BmBO-0CUpYkiyIp7ysqX_40';
-$db['default']['database'] = 'dd5jb2fae2acbe';
-$db['default']['dbdriver'] = 'postgre';
+
 
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = TRUE;
